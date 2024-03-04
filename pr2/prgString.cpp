@@ -30,7 +30,12 @@ bool isPrefix(std::string a, std::string b) {
  */
 bool isSubstring(std::string a, std::string b) {
        
-   /* COMPLETAR Y CORREGIR EL VALOR DE RETORNO */
-   return false;
+   if(a.length()>b.length()){
+    return false;
+   } else if (isPrefix(a, b)){
+    return true;
+   } else {
+    return isSubstring(a, b.substr(1));
+   }
 }
 

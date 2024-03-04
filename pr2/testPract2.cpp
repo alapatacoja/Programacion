@@ -2,7 +2,7 @@
 #include <string>
 #include <cstdio>
 #include <iomanip>      // std::setw
-#include "prgString.cpp"
+#include "prgString.h"
 
 
 // b.rfind(a) devuelve string::npos si la subcadena a no se encuentra en b. Si la subcadena a se encuentra en b, entonces rfind devuelve la posición de inicio de la última ocurrencia de la subcadena a en b.
@@ -105,7 +105,39 @@ void testIsSubstring() {
     
     // a de menor longitud que b y a es sucadena de b
     // porque a está en b a partir de una posición intermedia
-    /* COMPLETAR */       
+    /* COMPLETAR */  
+    compareIsSubstring(s[0], s[0]);
+                      
+    // solo a vacía
+    compareIsSubstring(s[0], s[1]);
+    
+    // solo b vacía
+   compareIsSubstring(s[1], s[0]);
+                      
+    // a de mayor longitud que b
+    compareIsSubstring(s[3], s[1]);
+    
+    // a y b de igual longitud y a es prefijo de b
+    compareIsSubstring(s[1], s[1]);
+    
+    // a y b de igual longitud y a no es prefijo de b
+    compareIsSubstring(s[3], s[4]);
+    
+    // a de menor longitud que b y a es prefijo de b
+    compareIsSubstring(s[1], s[3]);
+    
+    // a de menor longitud que b y a no es prefijo de b:
+    // por el primer carácter
+    compareIsSubstring(s[2], s[6]);
+    
+    // a de menor longitud que b y a no es prefijo de b:
+    // por el ultimo carácter
+    compareIsSubstring(s[3], s[6]);
+    
+    // a de menor longitud que b y a no es prefijo de b:
+    // por un carácter intermedio
+    compareIsSubstring(s[4], s[6]);    
+    compareIsSubstring(s[8], s[6]); 
     
 }
 
