@@ -10,25 +10,39 @@ void drawCentSquare(double cX, double cY, double l) {
     // a partir de su centro (cX, cY) y del lado l:
     double x0 = cX - l / 2, x1 = cX + l / 2;
     double y0 = cY - l / 2, y1 = cY + l / 2;
-	// COMPLETAR
+    
+    std::cout << x0 << " " << y0 << std::endl;
+    std::cout << x1 << " " << y0 << std::endl;
+    std::cout << x0 << " " << y1 << std::endl;
+    std::cout << x1 << " " << y1 << std::endl;
+	
 }
 
 /* Genera una RSquare de orden n >= 1,
  con centro en (cX, cY) y cuadrado central de lado l. */
 void rSquare(int n, double cX, double cY, double l) {
-    // COMPLETAR
+    if (n == 1) {
+        drawCentSquare(cX, cY, l);
+    } else {
+        double x0 = cX - l / 2, x1 = cX + l / 2;
+        double y0 = cY - l / 2, y1 = cY + l / 2;
+        rSquare(n - 1, x0, y0, l / 2);
+        rSquare(n - 1, x0, y1, l / 2);
+        rSquare(n - 1, x1, y0, l / 2);
+        rSquare(n - 1, x1, y1, l / 2);
+    }
 } 
 
 /* Genera una RSquare de orden n >= 1, longitud 1.0 y
  centrada en (0, 0). */
 void rSquare(int n) {
-    // COMPLETAR     
+    rSquare(n, 0, 0, 1.0);   
 }
 
 /* Genera una RSquare de orden n >= 1, longitud 1.0 y
  centrada en (0, 0). Recibe como parámetro de entrada n */
 int main(int argc, // Número de cadenas en el array argv
-         char *argv[]) { // Array con los argumentos pasados
+    char *argv[]) { // Array con los argumentos pasados
                          // por la línea de comandos.
                          // El primer elemento del vector
                          // argv[0] es el nombre del programa.
@@ -42,5 +56,5 @@ int main(int argc, // Número de cadenas en el array argv
 	el valor */
     int nivel = std::stoi(argv[1]); 
     rSquare(nivel);
-    return 0;
+    return 0; 
 }
